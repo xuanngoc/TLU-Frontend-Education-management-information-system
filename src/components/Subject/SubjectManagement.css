@@ -1,0 +1,19 @@
+.section {
+    flex-grow: 8;
+    /* margin-left: 350px; */
+    margin-bottom: 50px;
+}
+
+#table-name {
+    text-align: center;
+    font-size: 2em;
+    
+}
+
+.table {
+    margin: 0 auto;
+}
+
+th {
+    padding-right: 35px;
+}

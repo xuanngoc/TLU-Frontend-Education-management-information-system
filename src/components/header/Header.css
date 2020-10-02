@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Kurale&family=Sniglet&display=swap');
+
+.header {
+    display: flex;
+    justify-content: space-between;  
+    align-content: flex-end; 
+    background-color: #F6F6F6;
+}
+
+.logo {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.header-items{
+    align-self: center;
+}
+
+#system-name {
+    font-size: 2.8em;
+    font-family: 'Kurale', serif;
+    color: #000A3D;
+}
+
+#account-info {
+    padding-right: 50px;
+    font-size: 1.5em;
+    color: #30336b;
+}

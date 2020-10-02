@@ -1,0 +1,27 @@
+.nav {
+    background-color: lavender;
+    list-style: none;
+    text-decoration: none;
+    /* position: fixed; */
+    left: 0;
+    width: 350px;
+    height: 100%;
+    flex-grow: 2;
+    
+}
+
+.nav a{ 
+    display: block;
+    line-height: 65px;
+    font-size: 20px;
+    color: blueviolet;
+    text-decoration: none;
+    padding-left: 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid red;
+    transition: 0.4s;
+}
+
+.nav a:hover {
+    padding-left: 35px;
+}
