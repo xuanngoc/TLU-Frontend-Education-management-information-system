@@ -12,7 +12,11 @@ export default class SubjectManagement extends Component {
     }
 
     componentDidMount() {
-        fetch('https://edu-ms.herokuapp.com/api/v1/mon-hoc')
+        fetch('http://localhost:8080/api/v1/mon-hoc', {
+            headers : {
+                "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjAyNzYzOTQ4LCJleHAiOjE2MDMzNjg3NDh9.uaE9d4E0VQJTs-VdStObPpM1rxSjU3IAm6c3DJ7we3jhF1KIAkp0Dv5-9LX1ZrPb-l-QbedXBjeki8BL_Epk6Q"
+            }
+        })
             .then(response => response.json())
             .then(data => this.setState({
                 subjects: data
