@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import HOST from '../../Host'
 
 import './SubjectManagement.css'
 
@@ -12,9 +13,9 @@ export default class SubjectManagement extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/api/v1/mon-hoc', {
+        fetch(HOST + '/mon-hoc', {
             headers : {
-                "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjAyNzYzOTQ4LCJleHAiOjE2MDMzNjg3NDh9.uaE9d4E0VQJTs-VdStObPpM1rxSjU3IAm6c3DJ7we3jhF1KIAkp0Dv5-9LX1ZrPb-l-QbedXBjeki8BL_Epk6Q"
+                "Authorization": this.props.store.token
             }
         })
             .then(response => response.json())
@@ -25,7 +26,7 @@ export default class SubjectManagement extends Component {
 
     render() {
         return (
-            <section className='section'>
+            <section className='col-9'>
                 <h3 id='table-name' >Danh sách các môn học</h3>
                 <table className='table'>
                     <thead>

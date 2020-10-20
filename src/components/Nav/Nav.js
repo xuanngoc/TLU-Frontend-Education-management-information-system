@@ -7,13 +7,16 @@ import './Nav.css';
 export default class Nav extends Component {
     render() {
         return (
-            <nav className="nav">
-                <Link to="/quan-ly-nghanh">Quản lý ngành đào tạo</Link>
-                <Link to="/quan-ly-giao-vien">Quản lý giáo viên</Link>
-                <Link to="/quan-ly-chuong-trinh-dao-tao">Quản lý chương trình đào tạo</Link>
-                <Link to="/quan-ly-bo-mon">Quản lý bộ môn</Link>
-                <Link to="/quan-ly-hoc-phan">Quản lý học phần</Link>
-                <Link to="/quan-ly-de-cuong-chi-tiet">Quản lý đề cương chi tiết</Link>
+            <nav className="col-3 nav pt-5">
+                <ul >
+                    <Link className="font-weight-bold" to="/quan-ly-nghanh">Quản lý ngành đào tạo</Link>
+                    <Link className="font-weight-bold" to="/quan-ly-giao-vien">Quản lý giáo viên</Link>
+                    <Link className="font-weight-bold" to="/quan-ly-chuong-trinh-dao-tao">Quản lý chương trình đào tạo</Link>
+                    <Link className="font-weight-bold" to="/quan-ly-bo-mon">Quản lý bộ môn</Link>
+                    <Link className="font-weight-bold" to="/quan-ly-hoc-phan">Quản lý học phần</Link>
+                    <Link className="font-weight-bold" to="/quan-ly-de-cuong-chi-tiet">Quản lý đề cương chi tiết</Link>
+                </ul>
+                
             </nav>
         )
     }

@@ -6,6 +6,10 @@ import Header from './components/header/Header';
 import Login from './components/Login/Login';
 import Nav from './components/Nav/Nav'
 import SubjectManagement from './components/Subject/SubjectManagement';
+import HOST from './Host';
+import TeacherManagement from './components/Teacher/TeacherManagement';
+import DepartmentManagement from './components/Department/DepartmentManagement';
+import DetailDepartment from './components/Department/DetailDepartment';
 
 
 
@@ -27,7 +31,7 @@ class App extends Component {
 
   getUserInfo = (store) => {
     // fetch user info
-    fetch('http://localhost:8080/api/v1/user', {
+    fetch(HOST + '/user', {
       headers: {
         'Authorization': store.token
       },
@@ -75,16 +79,28 @@ class App extends Component {
           <Login onLogIn={this.onLoginIn} onLoginSuccess={this.onLoginSuccess} onRedirect={this.onRedirect} storeCollection={this.storeCollector} />
           :
           <div>
-            <Header userFullName={user.fullname} onLogout={this.onLogout} />} 
-            <div style={{'display': 'flex'}}>
-            <Nav style={{'flex-grow': '2'}} /> }
+            <Header userFullName={user.fullname} onLogout={this.onLogout} />
+            <div className="row">
+            <Nav /> 
               <Switch>
                 <Route exact path="/">
-                  <SubjectManagement />
+                  <div className="col-9">
+                    Just home
+                  </div>
                 </Route> 
                 <Route path='/quan-ly-hoc-phan'>
-                  <SubjectManagement />
+                  <SubjectManagement store={this.state.store}/>
                 </Route>
+                <Route path='/quan-ly-giao-vien'>
+                  <TeacherManagement store={this.state.store}/>
+                </Route>
+                <Route exact path='/quan-ly-bo-mon'>
+                  <DepartmentManagement store={this.state.store}/>
+                </Route>
+                <Route path={`/quan-ly-bo-mon/:maBoMon`}>
+                  <DetailDepartment store={this.state.store} />
+                </Route>
+
               </Switch>
             </div>
           </div>

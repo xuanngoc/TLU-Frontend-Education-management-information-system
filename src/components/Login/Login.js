@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import HOST from '../../Host';
 //import './login.css';
 
 
@@ -22,7 +23,7 @@ export default class Login extends Component {
             password: this.state.password
         }
 
-        fetch('http://localhost:8080/api/v1/login', {
+        fetch(HOST + '/login', {
             headers: new Headers( {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",

@@ -4,17 +4,16 @@
     text-decoration: none;
     /* position: fixed; */
     left: 0;
-    width: 350px;
-    height: 100%;
-    flex-grow: 2;
+    /* width: 350px; */
+    height: 100vh;
     
 }
 
-.nav a{ 
+.nav a { 
     display: block;
     line-height: 65px;
     font-size: 20px;
-    color: blueviolet;
+    color: #060A52;
     text-decoration: none;
     padding-left: 30px;
     box-sizing: border-box;

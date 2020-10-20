@@ -6,7 +6,7 @@ class Header extends Component {
     render() {
         return (
             <header className='row'>
-                <img id="logo" className='col-2 ml-5' src="./LogoTLU.jpg" alt='Logo Thang Long university' />
+                <img id="logo" className='col-2 ml-5' src="/LogoTLU.jpg" alt='Logo Thang Long university' />
                 <h3 id='system-name' className='col-8 text-center align-self-center'>Hệ thống quản lý chương trình đào tạo</h3>
                 <div id='account-info' className='col-2 text-center align-self-center'>
                     
