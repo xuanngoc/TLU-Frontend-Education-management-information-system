@@ -72,19 +72,20 @@ export default class Login extends Component {
     render() {
         const {username, password, loginError} = this.state;
         return (
-            <div className="container">
-                <form onSubmit={this.onSubmitLogin}>
-                    <div className="form-group">
+            <div className="row align-items-center vh-100 ">
+                
+                <form className="col-4 offset-4 bg-info p-5" onSubmit={this.onSubmitLogin}>
+                    <div className="form-group mt-5">
                         <label htmlFor="exampleInputEmail1">Tài khoản</label>
                         <input type="text" className="form-control" id="username" name="username" onChange={this.onInputChange} value={username}/>
                         
                     </div>
-                    <div className="form-group">
+                    <div className="form-group mt-2 mb-5">
                         <label htmlFor="password">Mật khẩu</label>
                         <input type="password" className="form-control" id="password" name="password" onChange={this.onInputChange} value={password} />
                     </div>
                     {loginError ? <p>Tài khoản hoặc mật khẩu không chính xác</p> : null}
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">Đăng nhập</button>
                 </form>      
             </div>
         )
