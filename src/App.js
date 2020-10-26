@@ -10,6 +10,7 @@ import HOST from './Host';
 import TeacherManagement from './components/Teacher/TeacherManagement';
 import DepartmentManagement from './components/Department/DepartmentManagement';
 import DetailDepartment from './components/Department/DetailDepartment';
+import MajorManagement from './components/Major/MajorManagement';
 
 
 
@@ -79,7 +80,7 @@ class App extends Component {
           <Login onLogIn={this.onLoginIn} onLoginSuccess={this.onLoginSuccess} onRedirect={this.onRedirect} storeCollection={this.storeCollector} />
           :
           <div>
-            <Header userFullName={user.fullname} onLogout={this.onLogout} />
+            <Header user={user} onLogout={this.onLogout} />
             <div className="row">
             <Nav /> 
               <Switch>
@@ -99,6 +100,10 @@ class App extends Component {
                 </Route>
                 <Route path={`/quan-ly-bo-mon/:maBoMon`}>
                   <DetailDepartment store={this.state.store} />
+                </Route>
+
+                <Route path={`/quan-ly-nghanh`}>
+                  <MajorManagement store={this.state.store} />
                 </Route>
 
               </Switch>

@@ -41,6 +41,7 @@ export default class DepartmentManagement extends Component {
         this.setState({
             showModalInsert: false,
         })
+        this.getDepartments();
     }
 
     componentWillMount() {

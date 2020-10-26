@@ -72,21 +72,35 @@ export default class Login extends Component {
     render() {
         const {username, password, loginError} = this.state;
         return (
-            <div className="row align-items-center vh-100 ">
+            <div>
                 
-                <form className="col-4 offset-4 bg-info p-5" onSubmit={this.onSubmitLogin}>
-                    <div className="form-group mt-5">
-                        <label htmlFor="exampleInputEmail1">Tài khoản</label>
-                        <input type="text" className="form-control" id="username" name="username" onChange={this.onInputChange} value={username}/>
+                <div className="row align-items-center vh-100" style={{margin: "0"}} >
+                    <form className="col-12 col-md-4 offset-md-4 p-5" style={{background: "#74b9ff"}} onSubmit={this.onSubmitLogin}>
+                        <div className="row justify-content-center">
+                            <img id="logo1" className='col-12 mt-5' src="/LogoTLU.jpg" alt='Logo Thang Long university' />
+                        </div>
                         
-                    </div>
-                    <div className="form-group mt-2 mb-5">
-                        <label htmlFor="password">Mật khẩu</label>
-                        <input type="password" className="form-control" id="password" name="password" onChange={this.onInputChange} value={password} />
-                    </div>
-                    {loginError ? <p>Tài khoản hoặc mật khẩu không chính xác</p> : null}
-                    <button type="submit" className="btn btn-primary">Đăng nhập</button>
-                </form>      
+                        <h4 className="text-center mt-5">Đăng nhập</h4>
+                        <div className="form-group mt-3">
+                            <label htmlFor="username">Tài khoản</label>
+                            <input type="text" className="form-control"  name="username" onChange={this.onInputChange} value={username}/>
+                            
+                        </div>
+
+                        <div className="form-group mt-2 mb-5">
+                            <label htmlFor="password">Mật khẩu</label>
+                            <input type="password" className="form-control" name="password" onChange={this.onInputChange} value={password} />
+                        </div>
+
+                        {loginError ? <p>Tài khoản hoặc mật khẩu không chính xác</p> : null}
+
+                        <div className="row justify-content-center">
+                            <button type="submit" className="btn" style={{background: "#6c5ce7", color: "#fff"}}>Đăng nhập</button>
+                        </div>
+                        
+                    </form>
+                </div>
+                      
             </div>
         )
     }

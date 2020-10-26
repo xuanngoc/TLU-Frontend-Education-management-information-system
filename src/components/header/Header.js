@@ -11,7 +11,10 @@ class Header extends Component {
                 <div id='account-info' className='col-2 text-center align-self-center'>
                     
                     <div>
-                        Hello <strong>{this.props.userFullName}</strong>
+                        Hello, <strong>{this.props.user.fullname}</strong>
+                    </div>
+                    <div>
+                        * {this.props.user.role} *
                     </div>
                     <div className="mt-2">
                         <button id="non-style-btn" onClick={this.props.onLogout}>Đăng xuất</button>
