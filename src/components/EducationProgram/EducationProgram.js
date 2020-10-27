@@ -128,7 +128,7 @@ class EducationProgram extends Component {
                 </div>
                 <hr></hr>
                 {
-                    this.state.educationProgram !== null ? <DetailEducationProgram educationProgram={this.state.educationProgram}/> : ""
+                    this.state.educationProgram !== null ? <DetailEducationProgram store={this.props.store} educationProgram={this.state.educationProgram}/> : ""
                 }
                 
                
