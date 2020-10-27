@@ -9,6 +9,7 @@ export default class Nav extends Component {
         return (
             <nav className="col-3 nav pt-5">
                 <ul >
+                    <Link className="font-weight-bold" to="/quan-ly-nam-hoc">Quản lý năm học</Link>
                     <Link className="font-weight-bold" to="/quan-ly-nghanh">Quản lý ngành đào tạo</Link>
                     <Link className="font-weight-bold" to="/quan-ly-giao-vien">Quản lý giáo viên</Link>
                     <Link className="font-weight-bold" to="/quan-ly-chuong-trinh-dao-tao">Quản lý chương trình đào tạo</Link>

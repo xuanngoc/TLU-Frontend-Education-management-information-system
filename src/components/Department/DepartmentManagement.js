@@ -76,7 +76,7 @@ export default class DepartmentManagement extends Component {
                                     <td>{index + 1}</td>
                                     <td>{department.maBoMon}</td>
                                     <td>{department.tenBoMon}</td>
-                                    <td className="text-danger">{department.truongBoMon === null ? 'Chưa có trưởng bộ môn' : department.truongBoMon}</td>
+                                    <td className="text-danger">{department.truongBoMon === null ? 'Chưa có trưởng bộ môn' : department.truongBoMon.user.fullname}</td>
                                     <td className="text-center">
                                         <Link to={"quan-ly-bo-mon/" + department.maBoMon} ><i className="fas fa-info-circle text-info " style={{fontSize: "1.5em"}}></i></Link>
                                     </td>

@@ -11,6 +11,8 @@ import TeacherManagement from './components/Teacher/TeacherManagement';
 import DepartmentManagement from './components/Department/DepartmentManagement';
 import DetailDepartment from './components/Department/DetailDepartment';
 import MajorManagement from './components/Major/MajorManagement';
+import SchoolYear from './components/SchoolYear/SchoolYear';
+import EducationProgram from './components/EducationProgram/EducationProgram';
 
 
 
@@ -104,6 +106,14 @@ class App extends Component {
 
                 <Route path={`/quan-ly-nghanh`}>
                   <MajorManagement store={this.state.store} />
+                </Route>
+
+                <Route path={`/quan-ly-nam-hoc`}>
+                  <SchoolYear store={this.state.store} />
+                </Route>
+
+                <Route path={`/quan-ly-chuong-trinh-dao-tao`}>
+                  <EducationProgram store={this.state.store} />
                 </Route>
 
               </Switch>
