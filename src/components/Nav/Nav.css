@@ -2,17 +2,15 @@
     background-color: lavender;
     list-style: none;
     text-decoration: none;
-    /* position: fixed; */
     left: 0;
-    /* width: 350px; */
     height: 100vh;
     
 }
 
 .nav a { 
     display: block;
-    line-height: 65px;
-    font-size: 20px;
+    line-height: 60px;
+    font-size: 15px;
     color: #060A52;
     text-decoration: none;
     padding-left: 30px;

@@ -3,7 +3,13 @@
 header {
     background-color: #F6F6F6;
     max-height: 150px;
+    
 }
+
+.row {
+    margin: 0px;
+}
+
 
 #logo {
     max-width: 150px;

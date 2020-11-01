@@ -58,14 +58,15 @@ class EducationProgram extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+        this.getEducationProgram();
+    }
+
+    getEducationProgram = () => {
         const data = {
             maNamHoc: this.state.maNamHoc,
             maNganhHoc: this.state.maNganhHoc
         }
 
-        e.preventDefault();
-
-        console.log(JSON.stringify(data));
         fetch(HOST + '/chuong-trinh-dao-tao', {
             headers: {
                 "Authorization": this.props.store.token,
@@ -83,18 +84,21 @@ class EducationProgram extends Component {
         .catch(error => console.log('An error occured ', error))
     }
 
+    onProgramChange = () => {
+        this.getEducationProgram();
+        console.log("Change");
+    }
+
     componentWillMount() {
         this.getSchoolYears();
         this.getMajors();
-       
-
         
     }
 
 
     render() {
         return (
-            <div className="col-9">
+            <div className="col-10">
                 <h1 className="text-center mt-3">Quản lý chương trình đào tạo</h1>
                 <div className="row justify-content-center">
                     <div className="mt-5" >
@@ -111,7 +115,7 @@ class EducationProgram extends Component {
                                 </select>
                             </div>
 
-                            <div class="form-group mx-sm-3 mb-2 ml-5">
+                            <div className="form-group mx-sm-3 mb-2 ml-5">
                                 <label htmlFor="maNganhHoc">Ngành học</label>
                                 <select name="maNganhHoc" className="form-control ml-3" value={this.state.maNganhHoc} onChange={this.onChange}> 
                                     {
@@ -128,7 +132,10 @@ class EducationProgram extends Component {
                 </div>
                 <hr></hr>
                 {
-                    this.state.educationProgram !== null ? <DetailEducationProgram store={this.props.store} educationProgram={this.state.educationProgram}/> : ""
+                    this.state.educationProgram !== null ? 
+                        <DetailEducationProgram store={this.props.store}  educationProgram={this.state.educationProgram} onProgramChange={this.onProgramChange} /> 
+                        : 
+                        ""
                 }
                 
                

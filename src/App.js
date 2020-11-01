@@ -83,7 +83,7 @@ class App extends Component {
           :
           <div>
             <Header user={user} onLogout={this.onLogout} />
-            <div className="row">
+            <div className="row" style={{margin: "0"}}>
             <Nav /> 
               <Switch>
                 <Route exact path="/">

@@ -11,8 +11,8 @@ class DetailEducationProgram extends Component {
         }
     }
 
-    componentDidMount() {
-        fetch(HOST + '/mon-hoc', {
+    getListSubjects = () => {
+        fetch(HOST + '/mon-hoc/' + this.props.educationProgram.maChuongTrinhDaoTao, {
             headers : {
                 "Authorization": this.props.store.token
             }
@@ -23,6 +23,37 @@ class DetailEducationProgram extends Component {
         }))
     }
 
+    componentDidMount() {
+        this.getListSubjects();
+    }
+
+    addSubject = (event) => {
+        
+        this.getListSubjects();
+        this.props.onProgramChange();
+        
+        const maChuongTrinh = this.props.educationProgram.maChuongTrinhDaoTao;
+        const loaiChuongTrinh = event.target.value;
+
+        const maMonHoc = event.target.name;
+        const url = `${HOST}/chuong-trinh-dao-tao/${loaiChuongTrinh}/${maChuongTrinh}`;
+
+        console.log(url);
+        console.log(maMonHoc);
+
+        fetch(url, {
+            headers : {
+                "Authorization": this.props.store.token,
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify({
+                maMon: maMonHoc
+            })
+        })
+        
+        
+    }
 
     render() {
         
@@ -31,21 +62,21 @@ class DetailEducationProgram extends Component {
 
         return (
             <div>
-                <div className="row justify-content-center">
+                <div className="row justify-content-center m-0">
                     <span className="mr-5" style={{fontSize: "1.7em"}}>Năm học: {namHoc}</span> 
                     <span className="ml-5" style={{fontSize: "1.7em"}}>Ngành học: {nganhHoc}</span>   
                 </div>
 
-                <div className="row justify-content-center mt-5">
-                    <div className="col-6 mr-4 border border-secondary" style={{background: "#dff9fb"}}> 
-                        <h7 className="text-center">Những học phần có trong hệ thống nhưng chưa được thêm vào CTDT này nè</h7>
+                <div className="row justify-content-center mt-5 ml-0 mr-0">
+                    <div className="col-7 mr-3 border border-secondary" style={{background: "#dff9fb"}}> 
+                        <h5 className="text-center">Những học phần có trong hệ thống nhưng chưa được thêm vào CTDT này nè</h5>
                         <table className='table'>
                             <thead>
                                 <tr>
                                     {/* <th>STT</th> */}
                                     <th>Mã học phần</th>
                                     <th>Tên học phần</th>
-                                    
+                                    <th>Thêm vào chương trình</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,10 +85,11 @@ class DetailEducationProgram extends Component {
                                         {/* <td>{index+1}</td> */}
                                         <td>{subject.maMon}</td>
                                         <td>{subject.tenMon}</td>
-                                        <td><button className="btn btn-primary">Thêm vào đại cương</button></td>
-                                        <td><button className="btn btn-secondary">Thêm vào chuyên ngành</button></td>
-                                        <td><button className="btn btn-info">Thêm vào tự do</button></td>
-                                        
+                                        <td className="">
+                                            <button className="btn btn-primary" value={"dai-cuong"} name={subject.maMon} style={{fontSize: "0.9em"}} onClick={this.addSubject}>Đại cương</button>
+                                            <button className="btn btn-secondary" value={"chuyen-nganh"} name={subject.maMon} style={{fontSize: "0.9em"}} onClick={this.addSubject}>Chuyên ngành</button>
+                                            <button className="btn btn-info" value={"tu-do"} name={subject.maMon} style={{fontSize: "0.9em"}} onClick={this.addSubject} >Tự do</button>
+                                        </td>
                                     </tr>
                                 )}
                                 
@@ -65,8 +97,35 @@ class DetailEducationProgram extends Component {
                         </table>
                     </div>
                     
-                    <div className="col-5 ml-4 border border-secondary" style={{background: "#dff9fb"}}>
-                        <h7 className="text-center">Những học phần đã được thêm vào chương trình đào tạo nè</h7>
+                    <div className="col-5- ml-3 border border-secondary" style={{background: "#dff9fb"}}>
+                        <h5 className="text-center">Những học phần đã được thêm vào chương trình đào tạo nè</h5>
+                        
+                        <table className='table'>
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã học phần</th>
+                                    <th>Tên học phần</th>
+                                    
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                
+                                {this.props.educationProgram.hocChuongTrinhDaoTao.map((subject, index) => 
+                                    <tr key={subject.monHoc.maMon}>
+                                        <td>{index+1}</td> 
+                                        <td>{subject.monHoc.maMon}</td>
+                                        <td>{subject.monHoc.tenMon}</td>
+                                        
+                                    </tr>
+                                    
+                                )}
+                                
+                            </tbody>
+                            
+                            
+                        </table>
                     </div>
                 </div>
             </div>

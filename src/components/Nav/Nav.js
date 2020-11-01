@@ -7,7 +7,7 @@ import './Nav.css';
 export default class Nav extends Component {
     render() {
         return (
-            <nav className="col-3 nav pt-5">
+            <nav className="col-2 nav pt-5">
                 <ul >
                     <Link className="font-weight-bold" to="/quan-ly-nam-hoc">Quản lý năm học</Link>
                     <Link className="font-weight-bold" to="/quan-ly-nghanh">Quản lý ngành đào tạo</Link>
