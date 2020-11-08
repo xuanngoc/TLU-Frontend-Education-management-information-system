@@ -74,8 +74,11 @@ export default class Login extends Component {
         return (
             <div>
                 
-                <div className="row align-items-center vh-100" style={{margin: "0"}} >
-                    <form className="col-12 col-md-4 offset-md-4 p-5" style={{background: "#74b9ff"}} onSubmit={this.onSubmitLogin}>
+                <div className="row align-items-center vh-100 " style={{margin: "0", backgroundColor: "rgb(229,208,235)",
+background: "linear-gradient(90deg, rgba(229,208,235,1) 0%, rgba(0,212,255,1) 47%, rgba(108,5,34,1) 100%)"}} >
+    
+                    <div className="col-md-4 "></div>
+                    <form className="col-12 col-md-4 p-5 rounded" style={{background: "white"}} onSubmit={this.onSubmitLogin}>
                         <div className="row justify-content-center">
                             <img id="logo1" className='col-12 mt-5' src="/LogoTLU.jpg" alt='Logo Thang Long university' />
                         </div>
@@ -92,7 +95,7 @@ export default class Login extends Component {
                             <input type="password" className="form-control" name="password" onChange={this.onInputChange} value={password} />
                         </div>
 
-                        {loginError ? <p>Tài khoản hoặc mật khẩu không chính xác</p> : null}
+                        {loginError ? <p className="text-danger">Tài khoản hoặc mật khẩu không chính xác</p> : null}
 
                         <div className="row justify-content-center">
                             <button type="submit" className="btn" style={{background: "#6c5ce7", color: "#fff"}}>Đăng nhập</button>

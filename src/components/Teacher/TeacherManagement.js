@@ -135,13 +135,11 @@ export default class TeacherManagement extends Component {
                                     </select>
                                  </div>
                                 
-                                <button type="submit" className="btn btn-primary">Submit</button>
+                                 <button type="button" className="btn btn-secondary ml-5" data-dismiss="modal">Hủy</button>
+                                <button type="submit" className="btn btn-primary mr-5 ml-5">Submit</button>
+                                
                             </form>
 
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
                         </div>
                         </div>
                     </div>

@@ -3,43 +3,42 @@ import HOST from '../../Host'
 
 import './SubjectManagement.css'
 
-export default class SubjectManagement extends Component {
+export default class SubjectByDepartment extends Component {
 
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
-            subjects: []
+            subjects: [],
+            maBoMon: ""
         }
     }
 
-    componentDidMount() {
-        fetch(HOST + '/mon-hoc', {
+    componentDidMount() {  
+        console.log(this.props.maBoMon)
+        fetch(`${HOST}/mon-hoc/bo-mon/${this.props.maBoMon}`, {
             headers : {
                 "Authorization": this.props.store.token
             }
         })
-            .then(response => response.json())
-            .then(data => this.setState({
-                subjects: data
-            }))
+        .then(response => response.json())
+        .then(data => this.setState({
+            subjects: data
+        }))
+        
     }
 
     render() {
+        // console.log(this.props.maBoMon)
         return (
+            
             <section className='col-10'>
-                <h3 id='table-name' >Danh sách các môn học z</h3>
+                <h3 id='table-name' >Danh sách các hoc phan thuoc bo mon</h3>
                 <table className='table'>
                     <thead>
                         <tr>
-                            <th>STT</th>
+                            <th>Stt</th>
                             <th>Mã học phần</th>
                             <th>Tên học phần</th>
-                            <th>Bộ môn</th>
-                            <th>Số tín chỉ</th>
-                            <th>Điều kiện tiên quyết</th>
-                            <th>Số giờ</th>
-                            
-                            <th>Hệ số</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,11 +47,6 @@ export default class SubjectManagement extends Component {
                                 <td>{index+1}</td>
                                 <td>{subject.maMon}</td>
                                 <td>{subject.tenMon}</td>
-                                <td>{typeof subject.boMon === 'object' ? subject.boMon.maBoMon : subject.boMon }</td>
-                                <td>{subject.soTinChi}</td>
-                                <td>{subject.hocPhanTienQuyet}</td>
-                                <td>{subject.soGio}</td>
-                                <td>{subject.heSo}</td>
                             </tr>
                         )}
                         

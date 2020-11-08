@@ -6,6 +6,7 @@ import Header from './components/header/Header';
 import Login from './components/Login/Login';
 import Nav from './components/Nav/Nav'
 import SubjectManagement from './components/Subject/SubjectManagement';
+import SubjectByDepartment from './components/Subject/SubjectByDepartment';
 import HOST from './Host';
 import TeacherManagement from './components/Teacher/TeacherManagement';
 import DepartmentManagement from './components/Department/DepartmentManagement';
@@ -23,7 +24,8 @@ class App extends Component {
     this.state = {
       login: false,
       user: {},
-      store: null
+      store: null,
+      maBoMon: ""
     }
 
     //this.onLoginSuccess = this.onLoginSuccess.bind(this);
@@ -41,9 +43,15 @@ class App extends Component {
       method: 'GET'
     })
     .then(res => res.json())
-    .then(data => this.setState({
-      user: data
-    }))
+    .then(data => {
+      
+      this.setState({
+        user: data
+      });
+
+      this.getMaBoMon(store);
+    })
+
   }
 
   storeCollector() {
@@ -54,6 +62,7 @@ class App extends Component {
         store: store
       })
       this.getUserInfo(store);
+      
     };
   }
 
@@ -69,8 +78,24 @@ class App extends Component {
     })
   }
 
+  getMaBoMon = (store) => {
+    console.log(`${HOST}/giao-vien/ma-bo-mon?userId=${this.state.user.userId}`)
+    fetch(`${HOST}/giao-vien/ma-bo-mon?userId=${this.state.user.userId}`, {
+      headers : {
+          "Authorization": store.token
+      }
+    })
+    .then(response => response.text())
+    .then(data => {
+      this.setState({
+        maBoMon: data
+      })
+    })
+  }
+
   componentDidMount() {
     this.storeCollector();
+    
   }
 
   render() {
@@ -84,14 +109,14 @@ class App extends Component {
           <div>
             <Header user={user} onLogout={this.onLogout} />
             <div className="row" style={{margin: "0"}}>
-            <Nav /> 
+            <Nav user={user} /> 
               <Switch>
                 <Route exact path="/">
                   <div className="col-9">
                     Just home
                   </div>
                 </Route> 
-                <Route path='/quan-ly-hoc-phan'>
+                <Route exact path='/quan-ly-hoc-phan'>
                   <SubjectManagement store={this.state.store}/>
                 </Route>
                 <Route path='/quan-ly-giao-vien'>
@@ -114,6 +139,10 @@ class App extends Component {
 
                 <Route path={`/quan-ly-chuong-trinh-dao-tao`}>
                   <EducationProgram store={this.state.store} />
+                </Route>
+
+                <Route exact path={`/quan-ly-truc-thuoc`}>
+                  <SubjectByDepartment store={this.state.store} maBoMon={this.state.maBoMon} />
                 </Route>
 
               </Switch>
