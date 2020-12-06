@@ -14,6 +14,8 @@ import DetailDepartment from './components/Department/DetailDepartment';
 import MajorManagement from './components/Major/MajorManagement';
 import SchoolYear from './components/SchoolYear/SchoolYear';
 import EducationProgram from './components/EducationProgram/EducationProgram';
+import SubjectOutline from './components/Subject/SubjectOutline';
+import FormInsertSubjectOutline from './components/Subject/FormInsertSubjectOutline';
 
 
 
@@ -112,7 +114,7 @@ class App extends Component {
             <Nav user={user} /> 
               <Switch>
                 <Route exact path="/">
-                  <div className="col-9">
+                  <div className="col-10">
                     Just home
                   </div>
                 </Route> 
@@ -143,6 +145,22 @@ class App extends Component {
 
                 <Route exact path={`/quan-ly-truc-thuoc`}>
                   <SubjectByDepartment store={this.state.store} maBoMon={this.state.maBoMon} />
+                </Route>
+
+                <Route exact path={`/quan-ly-hoc-phan/:maHocPhan`}>
+                  <SubjectOutline store={this.state.store} />
+                </Route>
+
+                <Route  path={`/quan-ly-hoc-phan/:maHocPhan/them`}>
+                  <FormInsertSubjectOutline store={this.state.store} />
+                </Route>
+
+                <Route  path={`/quan-ly-de-cuong-chi-tiet`}>
+                  <SubjectOutline store={this.state.store} maBoMon={this.state.maBoMon} />
+                </Route>
+
+                <Route  path={`/quan-ly-de-cuong/:maNamHoc/:maMon/them`}>
+                  <FormInsertSubjectOutline store={this.state.store} />
                 </Route>
 
               </Switch>

@@ -74,16 +74,13 @@ export default class Login extends Component {
         return (
             <div>
                 
-                <div className="row align-items-center vh-100 " style={{margin: "0", backgroundColor: "rgb(229,208,235)",
-background: "linear-gradient(90deg, rgba(229,208,235,1) 0%, rgba(0,212,255,1) 47%, rgba(108,5,34,1) 100%)"}} >
+                <div className="row align-items-center vh-100 " style={{margin: "0", backgroundImage: "url(bg.jpg)"}} >
     
-                    <div className="col-md-4 "></div>
-                    <form className="col-12 col-md-4 p-5 rounded" style={{background: "white"}} onSubmit={this.onSubmitLogin}>
+                    <div className="col-md-5 "></div>
+                    <form className="col-12 col-md-3 p-5 rounded" style={{background: "white", opacity: "0.95"}} onSubmit={this.onSubmitLogin}>
                         <div className="row justify-content-center">
                             <img id="logo1" className='col-12 mt-5' src="/LogoTLU.jpg" alt='Logo Thang Long university' />
                         </div>
-                        
-                        <h4 className="text-center mt-5">Đăng nhập</h4>
                         <div className="form-group mt-3">
                             <label htmlFor="username">Tài khoản</label>
                             <input type="text" className="form-control"  name="username" onChange={this.onInputChange} value={username}/>

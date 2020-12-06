@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HOST from '../../Host'
+import { Link } from "react-router-dom";
 
 import './SubjectManagement.css'
 
@@ -32,13 +33,14 @@ export default class SubjectByDepartment extends Component {
         return (
             
             <section className='col-10'>
-                <h3 id='table-name' >Danh sách các hoc phan thuoc bo mon</h3>
+                <h3 id='table-name' >Danh sách các học phần thuộc bộ môn</h3>
                 <table className='table'>
                     <thead>
                         <tr>
                             <th>Stt</th>
                             <th>Mã học phần</th>
                             <th>Tên học phần</th>
+                            <th>Xem đề cương chi tiết</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +49,7 @@ export default class SubjectByDepartment extends Component {
                                 <td>{index+1}</td>
                                 <td>{subject.maMon}</td>
                                 <td>{subject.tenMon}</td>
+                                <td><Link className="font-weight btn btn-primary" to={`/quan-ly-hoc-phan/${subject.maMon}`}>Quản lý học phần</Link></td>
                             </tr>
                         )}
                         
